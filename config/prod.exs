@@ -21,6 +21,12 @@ config :earmark_dingus, EarmarkDingus.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :earmark_dingus, EarmarkDingus.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: "postgres",
+  password: "postgres",
+  database: "earmark_dingus_prod",
+  pool_size: 20
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
