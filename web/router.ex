@@ -23,5 +23,6 @@ defmodule EarmarkDingus.Router do
   scope "/", EarmarkDingus do
     pipe_through :api
     get "/", EarmarkController, :show
+    get "/alive", EarmarkController, :alive
   end
 end

@@ -12,6 +12,9 @@ defmodule EarmarkDingus.EarmarkController do
      |> put_status( 412 )
      |> json( %{error_message: "text parameter exceeds authorized length of #{@allowed_input_length}"} )
    end
-    
+  end
+
+  def alive conn, _params do
+    json( conn, %{message: "alive"} )
   end
 end
