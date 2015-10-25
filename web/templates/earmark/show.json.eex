@@ -1,5 +1,5 @@
 { "name": "Earmark",
-  "version": "<%= Earmark.Mixfile.project[:version] %>",
+  "version": "<%= @version %>",
   "html": "<%= @html %>",
   "author": "Dave Thomas",
   "website": "https://github.com/pragdave/earmark"}
