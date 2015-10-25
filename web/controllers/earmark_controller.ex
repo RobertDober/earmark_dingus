@@ -5,13 +5,13 @@ defmodule EarmarkDingus.EarmarkController do
   @allowed_input_length 1000
 
   def show conn, %{"text" => text} do 
-    if String.length(text) <= @allowed_input_length  do
+    # if String.length(text) <= @allowed_input_length  do
       render conn, "show.json", html: Earmark.to_html( text )
-    else
-      conn
-      |> put_status( 412 )
-      |> json( %{error_message: "text parameter exceeds authorized length of #{@allowed_input_length}"} )
-    end
+    # else
+    #   conn
+    #   |> put_status( 412 )
+    #   |> json( %{error_message: "text parameter exceeds authorized length of #{@allowed_input_length}"} )
+    # end
   end
 
   def show conn, _params do
