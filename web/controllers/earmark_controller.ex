@@ -1,7 +1,6 @@
 defmodule EarmarkDingus.EarmarkController do
   use EarmarkDingus.Web, :controller
 
-
   @allowed_input_length 1000
 
   def show conn, %{"text" => text} do 
@@ -9,7 +8,8 @@ defmodule EarmarkDingus.EarmarkController do
       render conn,
         "show.json",
          html: Earmark.to_html( text ), 
-         version: Earmark.Mixfile.project[:version]
+         version: "0.1.18" # Earmark.Mixfile.project[:version] does not work
+         # as Earmark.Mixfile is not available in prod environement
     else
       conn
       |> put_status( 412 )
@@ -21,7 +21,6 @@ defmodule EarmarkDingus.EarmarkController do
     conn
     |> put_status( 412 )
     |> json( %{error_message: "text parameter of max length #{@allowed_input_length} missing"} )
-
   end
 
   def alive conn, _params do
