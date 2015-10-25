@@ -5,11 +5,7 @@ defmodule EarmarkDingus.EarmarkController do
 
   def show conn, %{"text" => text} do 
     if String.length(text) <= @allowed_input_length  do
-      render conn,
-        "show.json",
-         html: Earmark.to_html( text ), 
-         version: "0.1.18" # Earmark.Mixfile.project[:version] does not work
-         # as Earmark.Mixfile is not available in prod environement
+      show_result conn, text
     else
       conn
       |> put_status( 412 )
@@ -25,5 +21,14 @@ defmodule EarmarkDingus.EarmarkController do
 
   def alive conn, _params do
     json( conn, %{message: "alive"} )
+  end
+
+  defp show_result conn, text do
+    {:ok, version} = :application.get_key( :earmark, :vsn)
+      render conn,
+        "show.json",
+         html: Earmark.to_html( text ), 
+         version: version
+
   end
 end
