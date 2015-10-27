@@ -4,13 +4,13 @@ defmodule EarmarkDingus.EarmarkController do
   @allowed_input_length 1000
 
   def show conn, %{"text" => text} do 
-    if String.length(text) <= @allowed_input_length  do
-      show_result conn, text
-    else
-      conn
-      |> put_status( 412 )
-      |> json( %{error_message: "text parameter exceeds authorized length of #{@allowed_input_length}"} )
-    end
+  if String.length(text) <= @allowed_input_length  do
+    show_result conn, text
+  else
+    conn
+    |> put_status( 412 )
+    |> json( %{error_message: "text parameter exceeds authorized length of #{@allowed_input_length}"} )
+  end
   end
 
   def show conn, _params do
@@ -25,10 +25,13 @@ defmodule EarmarkDingus.EarmarkController do
 
   defp show_result conn, text do
     {:ok, version} = :application.get_key( :earmark, :vsn)
-      render conn,
-        "show.json",
-         html: Earmark.to_html( text ), 
-         version: version
-
+    conn
+    |> json(%{
+      name: "Earmark",
+      version: "<%= @version %>",
+      html: Earmark.to_html( text ),
+      author: "Dave Thomas",
+      website: "https://github.com/pragdave/earmark"
+    })
   end
 end
