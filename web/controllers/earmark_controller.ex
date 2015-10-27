@@ -28,7 +28,7 @@ defmodule EarmarkDingus.EarmarkController do
     conn
     |> json(%{
       name: "Earmark",
-      version: "<%= @version %>",
+      version: "#{version}",
       html: Earmark.to_html( text ),
       author: "Dave Thomas",
       website: "https://github.com/pragdave/earmark"
