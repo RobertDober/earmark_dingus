@@ -14,7 +14,7 @@ In other words a get request with the following `text` parameter
     ...?text="**Hello** _World_"
 ```
 
-will return a json response 
+will return a json response like the following 
 
 ```
 { "name": "Earmark",
