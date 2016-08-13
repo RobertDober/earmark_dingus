@@ -14,7 +14,7 @@ In other words a get request with the following `text` parameter
     ...?text="**Hello** _World_"
 ```
 
-will return a json response like the following 
+will return a json response like the following example:
 
 ```
 { "name": "Earmark",
@@ -25,10 +25,8 @@ will return a json response like the following
 }"
 ```
 
-like this.
-
 ## LICENSE
 
 Copyright © 2015 Robert Dober
 
-Licensed under the same terms as Elixir.
+Licensed under the same terms as Elixir, see [LICENSE](LICENSE) for details.

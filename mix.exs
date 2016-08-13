@@ -37,7 +37,7 @@ defmodule EarmarkDingus.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:cowboy, "~> 1.0"},
    
-     {:earmark, "0.2.1"}
+     {:earmark, "1.0.1"}
    ]
   end
 
