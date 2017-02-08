@@ -1,57 +1,44 @@
-defmodule EarmarkDingus.Mixfile do
+defmodule Websvc.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :earmark_dingus,
-     version: "0.1.1",
-     elixir: "~> 1.3",
-     elixirc_paths: elixirc_paths(Mix.env),
-     compilers: [:phoenix] ++ Mix.compilers,
+    [app: :websvc,
+     version: "0.1.0",
+     elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     aliases: aliases,
-     deps: deps]
+     deps: deps()]
   end
 
-  # Configuration for the OTP application.
+  # Configuration for the OTP application
   #
-  # Type `mix help compile.app` for more information.
+  # Type "mix help compile.app" for more information
   def application do
-    [mod: {EarmarkDingus, []},
-     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :earmark]]
+    # Specify extra applications you'll use from Erlang/Elixir
+    [applications:
+     [:logger, :httpotion, :cowboy, :plug, :earmark],
+     mod: {Websvc.Api, []},
+
+     extra_applications: [:logger]]
   end
 
-  # Specifies which paths to compile per environment.
-  defp elixirc_paths(:test), do: ["lib", "web", "test/support"]
-  defp elixirc_paths(_),     do: ["lib", "web"]
-
-  # Specifies your project dependencies.
+  # Dependencies can be Hex packages:
   #
-  # Type `mix help deps` for examples and options.
+  #   {:my_dep, "~> 0.3.0"}
+  #
+  # Or git/path repositories:
+  #
+  #   {:my_dep, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
+  #
+  # Type "mix help deps" for more examples and options
   defp deps do
-    [{:phoenix, "~> 1.2.0"},
-       {:phoenix_pubsub, "~> 1.0"},
-         {:phoenix_ecto, "~> 3.0"},
-           {:postgrex, "~> 0.12"},
-             {:phoenix_html, "~> 2.6"},
-               {:phoenix_live_reload, "~> 1.0", only: :dev},
-                 {:gettext, "~> 0.11"},
+    [
+      {:cowboy, "~> 1.1.2"},
+      {:plug, "~> 1.3"},
+      {:httpotion, "~>3.0.2"},
+      {:poison, "~>1.3.0"},
 
-     {:earmark, "1.0.3"}
-   ]
-  end
-
-  # Aliases are shortcut or tasks specific to the current project.
-  # For example, to create, migrate and run the seeds file at once:
-  #
-  #     $ mix ecto.setup
-  #
-  # See the documentation for `Mix` for more info on aliases.
-  defp aliases do
-    ["ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
-     "ecto.reset": ["ecto.drop", "ecto.setup"],
-     "test": ["ecto.create --quiet", "ecto.migrate", "test"]]
+      {:earmark, "~>1.1.1"},
+    ]
   end
 end
-
