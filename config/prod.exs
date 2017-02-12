@@ -16,6 +16,12 @@ config :earmark_dingus2, EarmarkDingus2.Endpoint,
   url: [host: "example.com", port: 80],
   cache_static_manifest: "priv/static/manifest.json"
 
+config :earmark_dingus, EarmarkDingus.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: "postgres",
+  password: "postgres",
+  database: "earmark_dingus_prod",
+  pool_size: 20
 # Do not print debug messages in production
 config :logger, level: :info
 
