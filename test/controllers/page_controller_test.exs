@@ -1,8 +1,8 @@
-defmodule EarmarkDingus.PageControllerTest do
-  use EarmarkDingus.ConnCase
+defmodule EarmarkDingus2.PageControllerTest do
+  use EarmarkDingus2.ConnCase
 
-  test "GET /" do
-    conn = get conn(), "/"
-    assert json_response(conn, 412) == %{"error_message" => "text parameter of max length 1000 missing"} 
+  test "GET /", %{conn: conn} do
+    conn = get conn, "/"
+    assert html_response(conn, 200) =~ "Welcome to Phoenix!"
   end
 end

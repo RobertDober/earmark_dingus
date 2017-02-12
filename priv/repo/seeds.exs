@@ -5,7 +5,7 @@
 # Inside the script, you can read and write to any of your
 # repositories directly:
 #
-#     EarmarkDingus.Repo.insert!(%SomeModel{})
+#     EarmarkDingus2.Repo.insert!(%EarmarkDingus2.SomeModel{})
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.

@@ -1,10 +1,10 @@
-defmodule EarmarkDingus.ChannelCase do
+defmodule EarmarkDingus2.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
 
   Such tests rely on `Phoenix.ChannelTest` and also
-  imports other functionality to make it easier
+  import other functionality to make it easier
   to build and query models.
 
   Finally, if the test case interacts with the database,
@@ -20,19 +20,22 @@ defmodule EarmarkDingus.ChannelCase do
       # Import conveniences for testing with channels
       use Phoenix.ChannelTest
 
-      alias EarmarkDingus.Repo
-      import Ecto.Model
-      import Ecto.Query, only: [from: 2]
+      alias EarmarkDingus2.Repo
+      import Ecto
+      import Ecto.Changeset
+      import Ecto.Query
 
 
       # The default endpoint for testing
-      @endpoint EarmarkDingus.Endpoint
+      @endpoint EarmarkDingus2.Endpoint
     end
   end
 
   setup tags do
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(EarmarkDingus2.Repo)
+
     unless tags[:async] do
-      Ecto.Adapters.SQL.restart_test_transaction(EarmarkDingus.Repo, [])
+      Ecto.Adapters.SQL.Sandbox.mode(EarmarkDingus2.Repo, {:shared, self()})
     end
 
     :ok

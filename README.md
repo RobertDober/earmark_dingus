@@ -1,32 +1,19 @@
-# EarmarkDingus
+# EarmarkDingus2
 
-## SYNOPSIS
+To start your Phoenix app:
 
-This is an extremly simple Dingus Server allowing to integrate 
-[Earmark](https://github.com/pragdave/earmark)  into the [Babelmark2](http://johnmacfarlane.net/babelmark2/) project.
+  * Install dependencies with `mix deps.get`
+  * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
+  * Start Phoenix endpoint with `mix phoenix.server`
 
+Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-It follows the specification for such an integration, as specified [here](https://pairlist6.pair.net/pipermail/markdown-discuss/2012-October/002690.html)
+Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
 
-In other words a get request with the following `text` parameter
+## Learn more
 
-```
-    ...?text="**Hello** _World_"
-```
-
-will return a json response like the following example:
-
-```
-{ "name": "Earmark",
-  "version": "0.1.18",
-  "html": "<p><strong>Hello</strong> <em>World</em></p>\n",
-  "author": "Dave Thomas",
-  "website": "https://github.com/pragdave/earmark"
-}"
-```
-
-## LICENSE
-
-Copyright © 2015 Robert Dober
-
-Licensed under the same terms as Elixir, see [LICENSE](LICENSE) for details.
+  * Official website: http://www.phoenixframework.org/
+  * Guides: http://phoenixframework.org/docs/overview
+  * Docs: https://hexdocs.pm/phoenix
+  * Mailing list: http://groups.google.com/group/phoenix-talk
+  * Source: https://github.com/phoenixframework/phoenix

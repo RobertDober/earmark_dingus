@@ -1,12 +1,12 @@
-defmodule EarmarkDingus.Web do
+defmodule EarmarkDingus2.Web do
   @moduledoc """
   A module that keeps using definitions for controllers,
   views and so on.
 
   This can be used in your application as:
 
-      use EarmarkDingus.Web, :controller
-      use EarmarkDingus.Web, :view
+      use EarmarkDingus2.Web, :controller
+      use EarmarkDingus2.Web, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -18,10 +18,11 @@ defmodule EarmarkDingus.Web do
 
   def model do
     quote do
-      use Ecto.Model
+      use Ecto.Schema
 
+      import Ecto
       import Ecto.Changeset
-      import Ecto.Query, only: [from: 1, from: 2]
+      import Ecto.Query
     end
   end
 
@@ -29,11 +30,12 @@ defmodule EarmarkDingus.Web do
     quote do
       use Phoenix.Controller
 
-      alias EarmarkDingus.Repo
-      import Ecto.Model
-      import Ecto.Query, only: [from: 1, from: 2]
+      alias EarmarkDingus2.Repo
+      import Ecto
+      import Ecto.Query
 
-      import EarmarkDingus.Router.Helpers
+      import EarmarkDingus2.Router.Helpers
+      import EarmarkDingus2.Gettext
     end
   end
 
@@ -47,7 +49,9 @@ defmodule EarmarkDingus.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import EarmarkDingus.Router.Helpers
+      import EarmarkDingus2.Router.Helpers
+      import EarmarkDingus2.ErrorHelpers
+      import EarmarkDingus2.Gettext
     end
   end
 
@@ -61,9 +65,10 @@ defmodule EarmarkDingus.Web do
     quote do
       use Phoenix.Channel
 
-      alias EarmarkDingus.Repo
-      import Ecto.Model
-      import Ecto.Query, only: [from: 1, from: 2]
+      alias EarmarkDingus2.Repo
+      import Ecto
+      import Ecto.Query
+      import EarmarkDingus2.Gettext
     end
   end
 

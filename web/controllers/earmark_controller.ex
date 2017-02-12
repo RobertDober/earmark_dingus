@@ -1,5 +1,5 @@
-defmodule EarmarkDingus.EarmarkController do
-  use EarmarkDingus.Web, :controller
+defmodule EarmarkDingus2.EarmarkController do
+  use EarmarkDingus2.Web, :controller
 
   @allowed_input_length 1000
 

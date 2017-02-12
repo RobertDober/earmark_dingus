@@ -1,5 +1,0 @@
-{ name: Earmark,
-  version: "<%= @version %>",
-  html: "<%= @html %>",
-  author: Dave Thomas,
-  website: "https://github.com/pragdave/earmark"}

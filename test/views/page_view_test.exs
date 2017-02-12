@@ -1,3 +1,3 @@
-defmodule EarmarkDingus.PageViewTest do
-  use EarmarkDingus.ConnCase, async: true
+defmodule EarmarkDingus2.PageViewTest do
+  use EarmarkDingus2.ConnCase, async: true
 end

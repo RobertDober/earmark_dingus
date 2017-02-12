@@ -5,13 +5,16 @@
 # is restricted to this project.
 use Mix.Config
 
+# General application configuration
+config :earmark_dingus2,
+  ecto_repos: [EarmarkDingus2.Repo]
+
 # Configures the endpoint
-config :earmark_dingus, EarmarkDingus.Endpoint,
+config :earmark_dingus2, EarmarkDingus2.Endpoint,
   url: [host: "localhost"],
-  root: Path.dirname(__DIR__),
-  secret_key_base: "qtmpZM2d9E6vcLBFMKWy+U94yIrNrN/HWbrlQLhInq3cULoYOMz2D8H3uYxBrAgW",
-  render_errors: [accepts: ~w(html json)],
-  pubsub: [name: EarmarkDingus.PubSub,
+  secret_key_base: "Q1vwDFkG309bDVfmzHHXdKXOsRzyqwR76yWLBxGKRapZevP3fOHIN0p/otAKSMSh",
+  render_errors: [view: EarmarkDingus2.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: EarmarkDingus2.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
@@ -22,8 +25,3 @@ config :logger, :console,
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
-
-# Configure phoenix generators
-config :phoenix, :generators,
-  migration: true,
-  binary_id: false

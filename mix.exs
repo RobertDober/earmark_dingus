@@ -1,23 +1,23 @@
-defmodule EarmarkDingus.Mixfile do
+defmodule EarmarkDingus2.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :earmark_dingus,
-     version: "0.1.1",
-     elixir: "~> 1.3",
+    [app: :earmark_dingus2,
+     version: "0.0.1",
+     elixir: "~> 1.2",
      elixirc_paths: elixirc_paths(Mix.env),
-     compilers: [:phoenix] ++ Mix.compilers,
+     compilers: [:phoenix, :gettext] ++ Mix.compilers,
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     aliases: aliases,
-     deps: deps]
+     aliases: aliases(),
+     deps: deps()]
   end
 
   # Configuration for the OTP application.
   #
   # Type `mix help compile.app` for more information.
   def application do
-    [mod: {EarmarkDingus, []},
+    [mod: {EarmarkDingus2, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
                     :phoenix_ecto, :postgrex, :earmark]]
   end
@@ -31,18 +31,17 @@ defmodule EarmarkDingus.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [{:phoenix, "~> 1.2.0"},
-       {:phoenix_pubsub, "~> 1.0"},
-         {:phoenix_ecto, "~> 3.0"},
-           {:postgrex, "~> 0.12"},
-             {:phoenix_html, "~> 2.6"},
-               {:phoenix_live_reload, "~> 1.0", only: :dev},
-                 {:gettext, "~> 0.11"},
-
-     {:earmark, "1.0.3"}
-   ]
+     {:phoenix_pubsub, "~> 1.0"},
+     {:phoenix_ecto, "~> 3.0"},
+     {:postgrex, ">= 0.0.0"},
+     {:phoenix_html, "~> 2.6"},
+     {:phoenix_live_reload, "~> 1.0", only: :dev},
+     {:gettext, "~> 0.11"},
+     {:cowboy, "~> 1.0"},
+     {:earmark, "~> 1.1.1"}]
   end
 
-  # Aliases are shortcut or tasks specific to the current project.
+  # Aliases are shortcuts or tasks specific to the current project.
   # For example, to create, migrate and run the seeds file at once:
   #
   #     $ mix ecto.setup
@@ -54,4 +53,3 @@ defmodule EarmarkDingus.Mixfile do
      "test": ["ecto.create --quiet", "ecto.migrate", "test"]]
   end
 end
-

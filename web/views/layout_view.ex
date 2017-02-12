@@ -1,3 +1,3 @@
-defmodule EarmarkDingus.LayoutView do
-  use EarmarkDingus.Web, :view
+defmodule EarmarkDingus2.LayoutView do
+  use EarmarkDingus2.Web, :view
 end
