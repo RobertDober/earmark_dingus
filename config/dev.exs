@@ -37,6 +37,6 @@ config :earmark_dingus2, EarmarkDingus2.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
-  database: "earmark_dingus2_dev",
+  database: "earmark_dingus_dev",
   hostname: "localhost",
   pool_size: 10

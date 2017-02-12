@@ -3,7 +3,7 @@ defmodule EarmarkDingus2.Router do
 
 
   pipeline :api do
-    plug :accepts, ["json"]
+    plug :accepts, ["json", "html"]
   end
 
   scope "/", EarmarkDingus2 do
