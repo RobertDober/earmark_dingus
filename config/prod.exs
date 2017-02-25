@@ -13,15 +13,23 @@ use Mix.Config
 # which you typically run after static files are built.
 config :earmark_dingus2, EarmarkDingus2.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "example.com", port: 80],
-  cache_static_manifest: "priv/static/manifest.json"
+  url: [scheme: "https", host: "https://sleepy-depths-5324.herokuapp.com/", port: 443],
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  cache_static_manifest: "priv/static/manifest.json",
+  secret_key_base: System.get_env("SECRET_KEY_BASE")
 
-config :earmark_dingus, EarmarkDingus.Repo,
+config :earmark_dingus2, EarmarkDingus2.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "earmark_dingus_prod",
-  pool_size: 20
+  url: System.get_env("DATABASE_URL"),
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
+  ssl: true
+# config :earmark_dingus, EarmarkDingus.Repo,
+#   adapter: Ecto.Adapters.Postgres,
+#   username: "postgres",
+#   password: "postgres",
+#   database: "earmark_dingus_prod",
+#   pool_size: 20
+
 # Do not print debug messages in production
 config :logger, level: :info
 
@@ -68,4 +76,4 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
-import_config "prod.secret.exs"
+# import_config "prod.secret.exs"

@@ -10,4 +10,5 @@ config :earmark_dingus2, EarmarkDingus2.Endpoint,
 config :earmark_dingus2, EarmarkDingus2.Repo,
   adapter: Ecto.Adapters.Postgres,
   url: System.get_env("DATABASE_URL"),
-  size: 1 # The amount of database connections in the pool
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
+  ssl: true
