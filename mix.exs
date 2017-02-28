@@ -16,7 +16,7 @@ defmodule EarmarkDingus2.Mixfile do
   def application do
     # Specify extra applications you'll use from Erlang/Elixir
     [extra_applications: [:logger],
-     mod: {EarmarkDingus2.Api, []}]
+     mod: {EarmarkDingus2, []}]
   end
 
   # Dependencies can be Hex packages:
