@@ -15,7 +15,7 @@ defmodule EarmarkDingus2.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     # Specify extra applications you'll use from Erlang/Elixir
-    [applications: [:logger],
+    [applications: [:logger, :earmark],
      mod: {EarmarkDingus2, []}]
   end
 
@@ -32,7 +32,8 @@ defmodule EarmarkDingus2.Mixfile do
     [
       {:earmark, "~> 1.1"},
       {:cowboy, "~> 1.1"},
-      {:plug, "~> 1.3"}
+      {:plug, "~> 1.3"},
+      {:poison, "~> 3.1"}
     
     ]
   end

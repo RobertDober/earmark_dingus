@@ -18,10 +18,12 @@ defmodule EarmarkDingus2.Api do
   end
 
   get "/" do 
+    conn = Plug.Conn.fetch_query_params(conn)
+    {code, response} = EarmarkDingus2.Convert.convert(conn.params)
+    IO.inspect response
     conn
-    |> send_resp( 200, ~s[{"error": "not yet implemented", "server-version": "2.2.0"}] )
+    |> send_resp(code, Poison.encode!(response))
     |> halt()
-
   end
 
   get _ do
