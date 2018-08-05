@@ -1,4 +1,4 @@
-defmodule Websvc.Earmark do
+defmodule EarmarkDingus12.Earmark do
 
   @template %{
     name:     "Earmark",

@@ -2,43 +2,40 @@ defmodule Websvc.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :websvc,
-     version: "0.1.0",
-     elixir: "~> 1.4",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     deps: deps()]
+    [
+      app: :earmark_dingus12,
+      version: "0.2.0",
+      elixir: "~> 1.4",
+      elixirc_paths: elixirc_paths(Mix.env),
+      compilers: [:phoenix, :gettext] ++ Mix.compilers,
+      start_permanent: Mix.env == :prod,
+      deps: deps()
+    ]
   end
 
   # Configuration for the OTP application
   #
   # Type "mix help compile.app" for more information
   def application do
-    # Specify extra applications you'll use from Erlang/Elixir
-    [applications:
-     [:logger, :httpotion, :cowboy, :plug, :earmark],
-     mod: {Websvc.Api, []},
-
-     extra_applications: [:logger]]
+    [
+      mod: {EarmarkDingus12.Application, []},
+      extra_applications: [:logger, :runtime_tools]
+    ]
   end
 
-  # Dependencies can be Hex packages:
-  #
-  #   {:my_dep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:my_dep, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
-  #
-  # Type "mix help deps" for more examples and options
+  # Specifies which paths to compile per environment.
+  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(_),     do: ["lib"]
+
   defp deps do
     [
-      {:cowboy, "~> 1.1.2"},
-      {:plug, "~> 1.3"},
-      {:httpotion, "~>3.0.2"},
-      {:poison, "~>1.3.0"},
-
-      {:earmark, "~>1.1.1"},
+      {:phoenix, "~> 1.3.3"},
+      {:phoenix_pubsub, "~> 1.0"},
+      {:phoenix_html, "~> 2.10"},
+      {:phoenix_live_reload, "~> 1.0", only: :dev},
+      {:gettext, "~> 0.11"},
+      {:cowboy, "~> 1.0"},
+      {:earmark, "~> 1.2.5"}
     ]
   end
 end
